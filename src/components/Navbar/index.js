@@ -3,9 +3,9 @@ import style from './style.module.css';
 
 const Navbar = () => (
   <nav className={style.navbar}>
-    <h1>WEATHER(LOGO)</h1>
+    <h1 className={style.navitem}>WEATHER(LOGO)</h1>
     <Search />
-    <h2>ABOUT</h2>
+    <h2 className={style.navitem}>ABOUT</h2>
   </nav>
 );
 

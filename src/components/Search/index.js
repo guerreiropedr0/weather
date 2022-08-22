@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import style from './style.module.css';
 
 const Search = () => {
   const [search, setSearch] = useState('');
 
   return (
-    <form>
+    <form className={style.form}>
       <input
         type="text"
         value={search}
