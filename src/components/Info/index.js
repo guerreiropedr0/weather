@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import style from './style.module.css';
 
-const Weather = () => {
+const Info = () => {
   const weather = useSelector((state) => state.weather.location);
 
   const { location, current } = weather;
@@ -67,4 +67,4 @@ const Weather = () => {
   );
 };
 
-export default Weather;
+export default Info;
