@@ -6,8 +6,6 @@ const Weather = () => {
 
   const { location, current } = weather;
 
-  console.log(weather);
-
   return (
     <div className={style.card}>
       <ul className={style.nav}>
