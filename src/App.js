@@ -1,8 +1,13 @@
 import React from 'react';
+import Navbar from './components/Navbar';
+import Weather from './components/Weather';
 
 function App() {
   return (
-    <div />
+    <div>
+      <Navbar />
+      <Weather />
+    </div>
   );
 }
 
