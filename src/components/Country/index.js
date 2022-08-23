@@ -17,6 +17,7 @@ const Country = () => {
           className={style.condition}
           src={current && current.condition.icon}
           alt={current && current.condition.text}
+          title={current && current.condition.text}
         />
       </div>
       <h2 className={style.time}>{location && location.localtime.slice(-5)}</h2>

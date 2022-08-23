@@ -12,26 +12,26 @@ const Weather = () => {
       </h2>
       <ul className={style['weather-info']}>
         <li>
-          Wind:
+          <i className="bi bi-wind" title="Wind" />
           {' '}
           {current && current.wind_kph}
           {' '}
           kph
         </li>
         <li>
-          Direction:
+          <i className="bi bi-compass" title="Wind direction" />
           {' '}
           {current && current.wind_dir}
         </li>
         <li>
-          Precip:
+          <i className="bi bi-droplet" title="Precipition" />
           {' '}
           {current && current.precip_mm}
           {' '}
           mm
         </li>
         <li>
-          Humidity:
+          <i className="bi bi-moisture" title="Humidity" />
           {' '}
           {current && current.humidity}
           %
