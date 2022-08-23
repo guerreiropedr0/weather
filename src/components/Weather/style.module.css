@@ -1,0 +1,11 @@
+.meteorology {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

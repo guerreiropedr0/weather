@@ -20,30 +20,3 @@
   display: flex;
   justify-content: space-around;
 }
-
-.country {
-  display: flex;
-  flex-direction: column;
-}
-
-.holder {
-  display: flex;
-  gap: 1rem;
-}
-
-.country-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.meteorology {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.weather-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}

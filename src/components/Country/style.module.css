@@ -1,0 +1,14 @@
+.country {
+  display: flex;
+  flex-direction: column;
+}
+
+.holder {
+  display: flex;
+  gap: 1rem;
+}
+
+.country-info {
+  display: flex;
+  flex-direction: column;
+}
