@@ -5,7 +5,7 @@ const apiKey = process.env.REACT_APP_apiKey;
 
 const initialState = {
   pending: false,
-  location: null,
+  location: {},
 };
 
 export const getLocation = createAsyncThunk('/weather/location', async (location) => {
