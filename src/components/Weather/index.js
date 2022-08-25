@@ -1,35 +1,64 @@
+import PropTypes from 'prop-types';
 import style from './style.module.css';
 
-const Weather = () => (
-  <div className={style.card}>
-    <ul className={style.nav}>
-      <li>CURRENT</li>
-      <li>FORECAST</li>
-    </ul>
-    <div className={style.info}>
-      <div className={style.country}>
-        <div className={style.holder}>
-          <div className={style['country-info']}>
-            <h1>Lagos</h1>
-            <small>Portugal</small>
-          </div>
-          <img className={style.condition} src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="Partly Cloudy" />
-        </div>
-        <h2 className={style.time}>16:44</h2>
-        <h3 className={style.day}>Friday, January 26, 2018</h3>
-      </div>
+const Weather = ({ props }) => {
+  const { current, unit } = props;
 
-      <div className={style.meteorology}>
-        <h2 className={style.temp}>22º C</h2>
-        <ul className={style['weather-info']}>
-          <li>Wind: 15.1 kph</li>
-          <li>Direction: SSW</li>
-          <li>Precip: 0.1</li>
-          <li>Humidity: 65%</li>
-        </ul>
-      </div>
+  return (
+    <div className={style.meteorology}>
+      <h2 className={style.temp}>
+        {unit.isAmerican
+          ? current && current.temp_f
+          : current && current.temp_c}
+        º
+        {' '}
+        {unit.scale}
+      </h2>
+      <ul className={style['weather-info']}>
+        <li>
+          <i className="bi bi-wind" title="Wind" />
+          {' '}
+          {unit.isAmerican
+            ? current && current.wind_mph
+            : current && current.wind_kph}
+          {' '}
+          {unit.speed}
+        </li>
+        <li>
+          <i className="bi bi-compass" title="Wind direction" />
+          {' '}
+          {current && current.wind_dir}
+        </li>
+        <li>
+          <i className="bi bi-droplet" title="Precipition" />
+          {' '}
+          {unit.isAmerican
+            ? current && current.precip_in
+            : current && current.precip_mm}
+          {' '}
+          {unit.measure}
+        </li>
+        <li>
+          <i className="bi bi-moisture" title="Humidity" />
+          {' '}
+          {current && current.humidity}
+          %
+        </li>
+      </ul>
     </div>
-  </div>
-);
+  );
+};
+
+Weather.propTypes = {
+  props: PropTypes.instanceOf(Object),
+  current: PropTypes.instanceOf(Object),
+  unit: PropTypes.instanceOf(Object),
+};
+
+Weather.defaultProps = {
+  props: {},
+  current: {},
+  unit: {},
+};
 
 export default Weather;
