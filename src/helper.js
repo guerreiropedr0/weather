@@ -1,4 +1,4 @@
-const toTwelveHour = (hour) => {
+export const toTwelveHour = (hour) => {
   // The hour will be a string with this format "hour:minutes"
   const betterHour = Number(hour);
 
@@ -21,4 +21,16 @@ const toTwelveHour = (hour) => {
   }
 };
 
-export default toTwelveHour;
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+export const formatDate = (date) => {
+  // The date will be a string with this format "year-month-day"
+
+  // Get the month
+  const dateMonth = Number(date.slice(6, 7) - 1);
+
+  // Get the day
+  const dateDay = Number(date.slice(8, 10));
+
+  return `${months[dateMonth]} ${dateDay}`;
+};

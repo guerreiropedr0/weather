@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import style from './style.module.css';
-import toTwelveHour from '../../helper';
+import { toTwelveHour, formatDate } from '../../helper';
 
 const Day = ({ day }) => {
   const times = [0, 6, 12, 18, 23];
 
   return (
     <div className={style.day}>
-      <h2>{day.date}</h2>
+      <h2>{formatDate(day.date)}</h2>
       <div className={style.weather}>
         {times.map((time) => (
           <div key={time} className={style.card}>
