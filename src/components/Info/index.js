@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Country from '../Country';
+import Forecast from '../Forecast';
 import Weather from '../Weather';
 import style from './style.module.css';
 
@@ -34,7 +35,7 @@ const Info = () => {
             <Country />
             <Weather />
           </>
-        ) : <div><h1>TEMPLATE TEXT</h1></div>}
+        ) : <Forecast />}
       </div>
     </div>
   );
