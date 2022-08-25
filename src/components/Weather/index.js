@@ -4,12 +4,12 @@ import style from './style.module.css';
 const Weather = ({ props }) => {
   const { current, unit } = props;
 
-  console.log(unit);
-
   return (
     <div className={style.meteorology}>
       <h2 className={style.temp}>
-        {current && current.temp_c}
+        {unit.isAmerican
+          ? current && current.temp_f
+          : current && current.temp_c}
         º
         {' '}
         {unit.scale}
@@ -18,7 +18,9 @@ const Weather = ({ props }) => {
         <li>
           <i className="bi bi-wind" title="Wind" />
           {' '}
-          {current && current.wind_kph}
+          {unit.isAmerican
+            ? current && current.wind_mph
+            : current && current.wind_kph}
           {' '}
           {unit.speed}
         </li>
@@ -30,7 +32,9 @@ const Weather = ({ props }) => {
         <li>
           <i className="bi bi-droplet" title="Precipition" />
           {' '}
-          {current && current.precip_mm}
+          {unit.isAmerican
+            ? current && current.precip_in
+            : current && current.precip_mm}
           {' '}
           {unit.measure}
         </li>
@@ -46,11 +50,15 @@ const Weather = ({ props }) => {
 };
 
 Weather.propTypes = {
+  props: PropTypes.instanceOf(Object),
   current: PropTypes.instanceOf(Object),
+  unit: PropTypes.instanceOf(Object),
 };
 
 Weather.defaultProps = {
+  props: {},
   current: {},
+  unit: {},
 };
 
 export default Weather;

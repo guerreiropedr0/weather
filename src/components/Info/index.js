@@ -52,7 +52,7 @@ const Info = () => {
             <Country props={{ location, current }} />
             <Weather props={{ current, unit }} />
           </>
-        ) : <Forecast props={{ location, forecast }} />}
+        ) : <Forecast props={{ location, forecast, unit }} />}
       </div>
     </div>
   );
