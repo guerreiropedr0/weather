@@ -1,24 +1,40 @@
-export const toTwelveHour = (hour) => {
+export const toTwelveHour = (time) => {
   // The hour will be a string with this format "hour:minutes"
-  const betterHour = Number(hour);
+
+  const betterTime = time.split(':');
+  const hour = Number(betterTime[0]);
+  const minute = betterTime[1];
+
+  let result = '';
 
   switch (true) {
-    case (betterHour === 0):
-    case (betterHour === 24):
-      return '12 AM';
+    case (hour === 0):
+    case (hour === 24):
+      result += '12 AM';
+      break;
 
-    case (betterHour < 12):
-      return `${betterHour} AM`;
+    case (hour < 12):
+      result += `${hour} AM`;
+      break;
 
-    case (betterHour === 12):
-      return '12 PM';
+    case (hour === 12):
+      result += '12 PM';
+      break;
 
-    case (betterHour >= 12):
-      return `${betterHour - 12} PM`;
+    case (hour > 12):
+      result += `${hour - 12} PM`;
+      break;
 
     default:
-      return hour;
+      result += hour;
+      break;
   }
+
+  if (minute === '00') {
+    return result;
+  }
+
+  return `${result[1] !== ' ' ? result.slice(0, 2) : result.slice(0, 1)}:${minute} ${result.slice(-2)}`;
 };
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

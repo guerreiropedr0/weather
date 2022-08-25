@@ -21,7 +21,7 @@ const Country = () => {
           title={current && current.condition.text}
         />
       </div>
-      <h2 className={style.time}>{location && toTwelveHour(location.localtime.slice(-7, -5))}</h2>
+      <h2 className={style.time}>{location && toTwelveHour(location.localtime.slice(-5))}</h2>
       <h3 className={style.day}>{location && formatDate(location.localtime.slice(0, 11))}</h3>
     </div>
   );
