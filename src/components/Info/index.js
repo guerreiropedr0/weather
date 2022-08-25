@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Country from '../Country';
 import Forecast from '../Forecast';
 import Weather from '../Weather';
 import style from './style.module.css';
 
 const Info = () => {
-  const [forecast, setForecast] = useState(false);
+  const { location, current, forecast } = useSelector((state) => state.weather.location);
+
+  const [isForecast, setForecast] = useState(false);
 
   const handleClick = (e) => {
     if (e.target.innerText === 'CURRENT') {
@@ -30,12 +33,12 @@ const Info = () => {
         </button>
       </ul>
       <div className={style.info}>
-        {!forecast ? (
+        {!isForecast ? (
           <>
-            <Country />
-            <Weather />
+            <Country props={{ location, current }} />
+            <Weather current={current} />
           </>
-        ) : <Forecast />}
+        ) : <Forecast props={{ location, forecast }} />}
       </div>
     </div>
   );

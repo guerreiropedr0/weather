@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import Day from '../Day';
 import style from './style.module.css';
 
-const Forecast = () => {
-  const { location, forecast } = useSelector((state) => state.weather.location);
-  console.log(location);
+const Forecast = ({ props }) => {
+  const { location, forecast } = props;
 
   return (
     <div className={style.info}>
@@ -17,6 +16,18 @@ const Forecast = () => {
       </div>
     </div>
   );
+};
+
+Forecast.propTypes = {
+  props: PropTypes.instanceOf(Object),
+  location: PropTypes.instanceOf(Object),
+  forecast: PropTypes.instanceOf(Object),
+};
+
+Forecast.defaultProps = {
+  props: {},
+  location: {},
+  forecast: {},
 };
 
 export default Forecast;

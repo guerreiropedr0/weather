@@ -1,11 +1,9 @@
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import style from './style.module.css';
 import { toTwelveHour, formatDate } from '../../helper';
 
-const Country = () => {
-  const weather = useSelector((state) => state.weather.location);
-
-  const { location, current } = weather;
+const Country = ({ props }) => {
+  const { location, current } = props;
 
   return (
     <div className={style.country}>
@@ -25,6 +23,18 @@ const Country = () => {
       <h3 className={style.day}>{location && formatDate(location.localtime.slice(0, 11))}</h3>
     </div>
   );
+};
+
+Country.propTypes = {
+  props: PropTypes.instanceOf(Object),
+  location: PropTypes.instanceOf(Object),
+  current: PropTypes.instanceOf(Object),
+};
+
+Country.defaultProps = {
+  props: {},
+  location: {},
+  current: {},
 };
 
 export default Country;
