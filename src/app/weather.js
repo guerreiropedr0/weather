@@ -6,6 +6,12 @@ const apiKey = process.env.REACT_APP_apiKey;
 const initialState = {
   pending: false,
   location: {},
+  unit: {
+    isAmerican: false,
+    speed: 'kph',
+    measure: 'mm',
+    scale: 'C',
+  },
 };
 
 export const getLocation = createAsyncThunk('/weather/location', async (location) => {
@@ -18,7 +24,21 @@ export const getLocation = createAsyncThunk('/weather/location', async (location
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
-  reducers: {},
+  reducers: {
+    changeUnit: (state) => {
+      if (!state.unit.isAmerican) {
+        state.unit.isAmerican = true;
+        state.unit.speed = 'mph';
+        state.unit.measure = 'in';
+        state.unit.scale = 'F';
+      } else {
+        state.unit.isAmerican = false;
+        state.unit.speed = 'kph';
+        state.unit.measure = 'mm';
+        state.unit.scale = 'C';
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getLocation.pending, (state) => {
       state.pending = true;
@@ -31,4 +51,5 @@ const weatherSlice = createSlice({
   },
 });
 
+export const { changeUnit } = weatherSlice.actions;
 export default weatherSlice.reducer;

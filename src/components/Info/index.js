@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeUnit } from '../../app/weather';
 import Country from '../Country';
 import Forecast from '../Forecast';
 import Weather from '../Weather';
 import style from './style.module.css';
 
 const Info = () => {
+  const dispatch = useDispatch();
   const { location, current, forecast } = useSelector((state) => state.weather.location);
+  const { unit } = useSelector((state) => state.weather);
 
   const [isForecast, setForecast] = useState(false);
 
@@ -14,6 +17,10 @@ const Info = () => {
     if (e.target.innerText === 'CURRENT') {
       setForecast(false);
     } else setForecast(true);
+  };
+
+  const handleScale = () => {
+    dispatch(changeUnit());
   };
 
   return (
@@ -31,12 +38,19 @@ const Info = () => {
         >
           FORECAST
         </button>
+        <button
+          onClick={handleScale}
+          type="button"
+        >
+          º
+          {unit.scale}
+        </button>
       </ul>
       <div className={style.info}>
         {!isForecast ? (
           <>
             <Country props={{ location, current }} />
-            <Weather current={current} />
+            <Weather props={{ current, unit }} />
           </>
         ) : <Forecast props={{ location, forecast }} />}
       </div>
