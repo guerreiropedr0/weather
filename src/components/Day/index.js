@@ -1,31 +1,9 @@
 import PropTypes from 'prop-types';
 import style from './style.module.css';
+import toTwelveHour from '../../helper';
 
 const Day = ({ day }) => {
   const times = [0, 6, 12, 18, 23];
-
-  const toTwelveHour = (hour) => {
-    // The hour will be a string with this format "hour:minutes"
-    const betterHour = Number(hour);
-
-    switch (true) {
-      case (betterHour === 0):
-      case (betterHour === 24):
-        return '12 AM';
-
-      case (betterHour < 12):
-        return `${betterHour} AM`;
-
-      case (betterHour === 12):
-        return '12 PM';
-
-      case (betterHour >= 12):
-        return `${betterHour - 12} PM`;
-
-      default:
-        return hour;
-    }
-  };
 
   return (
     <div className={style.day}>
