@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import style from './style.module.css';
+import { toTwelveHour, formatDate } from '../../helper';
 
 const Country = () => {
   const weather = useSelector((state) => state.weather.location);
@@ -20,8 +21,8 @@ const Country = () => {
           title={current && current.condition.text}
         />
       </div>
-      <h2 className={style.time}>{location && location.localtime.slice(-5)}</h2>
-      <h3 className={style.day}>{location && location.localtime.slice(0, 11)}</h3>
+      <h2 className={style.time}>{location && toTwelveHour(location.localtime.slice(-7, -5))}</h2>
+      <h3 className={style.day}>{location && formatDate(location.localtime.slice(0, 11))}</h3>
     </div>
   );
 };
