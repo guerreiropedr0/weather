@@ -1,5 +1,14 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
+:root {
+  --blue: #06f;
+  --blue-hover: #005de7;
+  --blue-active: #0058db;
+  --black: #3e3f41;
+  --black-hover: #2c2c2e;
+  --black-active: #171718;
+}
+
 *,
 *::before,
 *::after {

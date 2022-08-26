@@ -27,22 +27,26 @@ const Info = () => {
     <div className={style.card}>
       <ul className={style.nav}>
         <button
+          className={isForecast ? style['nav-item'] : `${style['nav-item']} ${style.active}`}
           onClick={(e) => handleClick(e)}
           type="button"
         >
           CURRENT
         </button>
         <button
+          className={isForecast ? `${style['nav-item']} ${style.active}` : style['nav-item']}
           onClick={(e) => handleClick(e)}
           type="button"
         >
           FORECAST
         </button>
         <button
+          className={`${style['nav-item']} ${style.unit}`}
           onClick={handleScale}
           type="button"
         >
           º
+          {' '}
           {unit.scale}
         </button>
       </ul>

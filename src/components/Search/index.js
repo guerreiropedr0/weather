@@ -20,6 +20,7 @@ const Search = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search for a city or country.."
+        required
       />
       <button className={style.btn} type="submit">
         <i className="bi bi-search" />
