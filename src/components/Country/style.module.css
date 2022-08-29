@@ -6,9 +6,14 @@
 .holder {
   display: flex;
   gap: 1rem;
+  align-items: flex-end;
 }
 
 .country-info {
   display: flex;
   flex-direction: column;
+}
+
+.time {
+  margin-top: 1rem;
 }

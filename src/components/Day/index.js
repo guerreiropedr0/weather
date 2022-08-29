@@ -20,7 +20,11 @@ const Day = ({ props }) => {
               {' '}
               {unit.scale}
             </h3>
-            <img src={day.hour[time].condition.icon} alt={day.hour[time].condition.text} />
+            <img
+              src={day.hour[time].condition.icon}
+              alt={day.hour[time].condition.text}
+              title={day.hour[time].condition.text}
+            />
             <h3>{time !== 23 ? toTwelveHour(day.hour[time].time.slice(11)) : '12 AM'}</h3>
           </div>
         ))}

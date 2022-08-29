@@ -54,4 +54,6 @@
 .info {
   display: flex;
   justify-content: space-around;
+  height: 60%;
+  align-items: center;
 }
