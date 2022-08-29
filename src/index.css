@@ -21,6 +21,15 @@
 }
 
 body {
-  background-color: #f9f6ee;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  background: url("./assets/sunny.webp") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
 }

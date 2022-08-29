@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar';
-import Info from './components/Info';
+// import Info from './components/Info';
 import { getLocation } from './app/weather';
 
 function App() {
@@ -19,9 +19,8 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="app">
       <Navbar />
-      <Info />
     </div>
   );
 }

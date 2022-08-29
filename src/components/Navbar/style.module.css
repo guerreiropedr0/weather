@@ -1,12 +1,54 @@
-.navbar {
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.unopened {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #fff;
+  color: #fff;
+  line-height: 2;
 }
 
-.navitem {
-  width: 300px;
-  text-align: center;
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.city {
+  font-weight: normal;
+}
+
+.navigator,
+.close {
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  transition: 0.2s;
+}
+
+.navbar {
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  transition: 0.5s;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  color: #fff;
+  margin-bottom: auto;
+  align-self: flex-end;
 }
