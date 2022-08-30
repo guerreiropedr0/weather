@@ -25,7 +25,8 @@ body {
 }
 
 .app {
-  background: url("./assets/sunny.webp") no-repeat center center;
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;

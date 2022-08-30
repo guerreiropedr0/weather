@@ -1,4 +1,4 @@
-.card {
+/* .card {
   display: flex;
   flex-direction: column;
   margin: 5rem;
@@ -56,4 +56,11 @@
   justify-content: space-around;
   height: 60%;
   align-items: center;
+} */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 97px);
+  justify-content: space-between;
 }
