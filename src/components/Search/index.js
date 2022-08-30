@@ -19,7 +19,7 @@ const Search = () => {
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search for a city or country.."
+        placeholder="Search for a city or country..."
         required
       />
       <button className={style.btn} type="submit">

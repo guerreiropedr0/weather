@@ -14,12 +14,22 @@
 
 .location {
   display: flex;
+  flex-direction: column;
+}
+
+.city-group {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .city {
   font-weight: normal;
+}
+
+.time {
+  font-size: 14px;
+  margin-left: 0.2rem;
 }
 
 .navigator,

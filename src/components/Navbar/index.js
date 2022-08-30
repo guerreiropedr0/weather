@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import style from './style.module.css';
 import Search from '../Search';
+import { toTwelveHour, formatDate } from '../../helper';
 
 const Navbar = () => {
   const { location } = useSelector((state) => state.weather.location);
@@ -33,8 +34,15 @@ const Navbar = () => {
     <div className={style.container}>
       <div className={style.unopened}>
         <div className={style.location}>
-          <i className="bi bi-geo-alt-fill" />
-          <h3 className={style.city}>{location && location.name}</h3>
+          <div className={style['city-group']}>
+            <i className="bi bi-geo-alt-fill" />
+            <h3 className={style.city}>{location && location.name}</h3>
+          </div>
+          <p className={style.time}>
+            {location && formatDate(location.localtime.slice(0, 10))}
+            {' '}
+            {location && toTwelveHour(location.localtime.slice(-5))}
+          </p>
         </div>
         <button
           title="Open Menu"
