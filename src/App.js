@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from './components/Navbar';
 import Info from './components/Info';
 import { getLocation } from './app/weather';
-import { useSelector } from 'react-redux';
 import day from './assets/day.webp';
 import night from './assets/night.jpg';
 import dayCloudy from './assets/day-cloudy.jpg';
@@ -18,7 +17,7 @@ function App() {
   const [background, setBackground] = useState(`url(${day})`);
 
   const handleBackground = () => {
-    switch(current && current.condition.text) {
+    switch (current && current.condition.text) {
       case 'Sunny':
         setBackground(`url(${day})`);
         break;
@@ -32,7 +31,7 @@ function App() {
           setBackground(`url(${dayCloudy})`);
         } else {
           setBackground(`url(${nightCloudy})`);
-        };
+        }
         break;
 
       case 'Patchy snow possible':
@@ -54,10 +53,7 @@ function App() {
         setBackground(`url(${overcast})`);
         break;
     }
-  }
-
-
-  console.log(current);
+  };
 
   useEffect(() => {
     // Get the lat and lon coords
@@ -73,8 +69,9 @@ function App() {
   return (
     <div
       onLoad={handleBackground}
-      style={{backgroundImage: background}}
-      className="app">
+      style={{ backgroundImage: background }}
+      className="app"
+    >
       <Navbar />
       <Info />
     </div>

@@ -1,11 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import style from './style.module.css';
 import Search from '../Search';
 import { toTwelveHour, formatDate } from '../../helper';
+import { changeUnit } from '../../app/weather';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const { location } = useSelector((state) => state.weather.location);
+
+  const { scale } = useSelector((state) => state.weather.unit);
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [width, setWidth] = useState({
@@ -28,6 +32,10 @@ const Navbar = () => {
         });
       }, 1);
     }
+  };
+
+  const handleScale = () => {
+    dispatch(changeUnit());
   };
 
   return (
@@ -55,14 +63,25 @@ const Navbar = () => {
         </button>
       </div>
       <nav style={width} className={style.navbar}>
-        <button
-          title="Close Menu"
-          type="button"
-          onClick={toggleMenu}
-          className={style.close}
-        >
-          <i className="bi bi-x-circle-fill" />
-        </button>
+        <div className={style.icons}>
+          <button
+            title="Choose scale"
+            type="button"
+            className={style.temp}
+            onClick={handleScale}
+          >
+            º
+            {scale}
+          </button>
+          <button
+            title="Close Menu"
+            type="button"
+            onClick={toggleMenu}
+            className={style.close}
+          >
+            <i className="bi bi-x-circle-fill" />
+          </button>
+        </div>
         <div style={{ marginBottom: 'auto' }}>
           <Search />
         </div>
