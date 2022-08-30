@@ -27,7 +27,7 @@
   font-weight: normal;
 }
 
-:focus {
+.search:focus {
   outline: none;
   border: 1px solid var(--black);
   box-shadow: inset 0 0 0 1px var(--black);

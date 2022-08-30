@@ -3,13 +3,13 @@ import { useState } from 'react';
 import style from './style.module.css';
 import Search from '../Search';
 import { toTwelveHour, formatDate } from '../../helper';
-import { changeUnit } from '../../app/weather';
+import { changeUnit, toggleForecast } from '../../app/weather';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { location } = useSelector((state) => state.weather.location);
-
   const { scale } = useSelector((state) => state.weather.unit);
+  const { isForecast } = useSelector((state) => state.weather);
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [width, setWidth] = useState({
@@ -36,6 +36,10 @@ const Navbar = () => {
 
   const handleScale = () => {
     dispatch(changeUnit());
+  };
+
+  const handleForecast = (e) => {
+    dispatch(toggleForecast(e.target.innerText));
   };
 
   return (
@@ -80,6 +84,22 @@ const Navbar = () => {
             className={style.close}
           >
             <i className="bi bi-x-circle-fill" />
+          </button>
+        </div>
+        <div className={style.options}>
+          <button
+            onClick={(e) => handleForecast(e)}
+            type="button"
+            className={isForecast ? style.option : `${style.option} ${style.active}`}
+          >
+            TODAY
+          </button>
+          <button
+            onClick={(e) => handleForecast(e)}
+            type="button"
+            className={isForecast ? `${style.option} ${style.active}` : style.option}
+          >
+            FORECAST
           </button>
         </div>
         <div style={{ marginBottom: 'auto' }}>

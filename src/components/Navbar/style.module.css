@@ -34,11 +34,16 @@
 
 .navigator,
 .close,
-.temp {
+.temp,
+.option {
   font-size: 2rem;
   border: none;
   background-color: transparent;
   transition: 0.2s;
+}
+
+input:focus {
+  outline: red;
 }
 
 .navbar {
@@ -72,4 +77,18 @@
   color: #929292;
   padding: 0.2rem 0.4rem;
   border-radius: 50%;
+}
+
+.options {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+  gap: 1rem;
+  color: #fff;
+}
+
+.active {
+  color: var(--blue);
 }
