@@ -1,33 +1,54 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import Day from '../Day';
 import style from './style.module.css';
 
 const Forecast = ({ props }) => {
-  const { location, forecast, unit } = props;
+  const { forecast, unit } = props;
+
+  const [day, setDay] = useState(0);
+
+  const forecastDay = forecast.forecastday[day];
+
+  const handleClick = (e) => {
+    if (e.target.className.includes('bi-arrow-left')) {
+      setDay(day - 1);
+    } else {
+      setDay(day + 1);
+    }
+  };
 
   return (
-    <div className={style.info}>
-      <div className={style.country}>
-        <h1>{location.name}</h1>
-        <small>{location.country}</small>
-      </div>
-      <div className={style.forecast}>
-        {forecast.forecastday.map((day) => <Day key={day.date_epoch} props={{ day, unit }} />)}
-      </div>
+    <div className={style.forecast}>
+      <button
+        style={{ display: day < 1 ? 'none' : 'block' }}
+        onClick={(e) => handleClick(e)}
+        className={style['icon-left']}
+        type="button"
+      >
+        <i className="bi bi-arrow-left" />
+      </button>
+      <button
+        style={{ display: day > 1 ? 'none' : 'block' }}
+        onClick={(e) => handleClick(e)}
+        className={style['icon-right']}
+        type="button"
+      >
+        <i className="bi  bi-arrow-right" />
+      </button>
+      <Day props={{ forecastDay, unit }} />
     </div>
   );
 };
 
 Forecast.propTypes = {
   props: PropTypes.instanceOf(Object),
-  location: PropTypes.instanceOf(Object),
   forecast: PropTypes.instanceOf(Object),
   unit: PropTypes.instanceOf(Object),
 };
 
 Forecast.defaultProps = {
   props: {},
-  location: {},
   forecast: {},
   unit: {},
 };

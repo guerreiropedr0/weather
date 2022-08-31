@@ -3,45 +3,45 @@ import style from './style.module.css';
 import { toTwelveHour, formatDate } from '../../helper';
 
 const Day = ({ props }) => {
-  const { day, unit } = props;
+  const { forecastDay, unit } = props;
   const times = [0, 6, 12, 18, 23];
 
   return (
     <div className={style.day}>
-      <h2>{formatDate(day.date)}</h2>
-      <div className={style.weather}>
+      <h4>{formatDate(forecastDay.date)}</h4>
+      <ul className={style.weather}>
         {times.map((time) => (
-          <div key={time} className={style.card}>
-            <h3>
+          <li key={time} className={style.card}>
+            <p>
               {unit.isAmerican
-                ? day.hour[time].temp_f
-                : day.hour[time].temp_c}
+                ? forecastDay.hour[time].temp_f
+                : forecastDay.hour[time].temp_c}
               º
               {' '}
               {unit.scale}
-            </h3>
+            </p>
             <img
-              src={day.hour[time].condition.icon}
-              alt={day.hour[time].condition.text}
-              title={day.hour[time].condition.text}
+              src={forecastDay.hour[time].condition.icon}
+              alt={forecastDay.hour[time].condition.text}
+              title={forecastDay.hour[time].condition.text}
             />
-            <h3>{time !== 23 ? toTwelveHour(day.hour[time].time.slice(11)) : '12 AM'}</h3>
-          </div>
+            <p className={style.time}>{time !== 23 ? toTwelveHour(forecastDay.hour[time].time.slice(11)) : '12 AM'}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
 
 Day.propTypes = {
   props: PropTypes.instanceOf(Object),
-  day: PropTypes.instanceOf(Object),
+  forecastDay: PropTypes.instanceOf(Object),
   unit: PropTypes.instanceOf(Object),
 };
 
 Day.defaultProps = {
   props: {},
-  day: {},
+  forecastDay: {},
   unit: {},
 };
 
