@@ -1,11 +1,24 @@
-.meteorology {
+.weather {
+  background-color: #fff;
+  padding: 1rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  gap: 2rem;
 }
 
 .weather-info {
   display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.item {
+  display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 1rem;
+  font-weight: bold;
 }

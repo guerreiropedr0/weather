@@ -12,6 +12,7 @@ const initialState = {
     measure: 'mm',
     scale: 'C',
   },
+  isForecast: false,
 };
 
 export const getLocation = createAsyncThunk('/weather/location', async (location) => {
@@ -38,6 +39,13 @@ const weatherSlice = createSlice({
         state.unit.scale = 'C';
       }
     },
+    toggleForecast: (state, action) => {
+      if (action.payload === 'TODAY') {
+        state.isForecast = false;
+      } else {
+        state.isForecast = true;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getLocation.pending, (state) => {
@@ -51,5 +59,5 @@ const weatherSlice = createSlice({
   },
 });
 
-export const { changeUnit } = weatherSlice.actions;
+export const { changeUnit, toggleForecast } = weatherSlice.actions;
 export default weatherSlice.reducer;

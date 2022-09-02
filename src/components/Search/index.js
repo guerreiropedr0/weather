@@ -15,12 +15,16 @@ const Search = () => {
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       <input
+        className={style.search}
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search for a city or country.."
+        placeholder="Search for a city or country..."
+        required
       />
-      <button type="submit">Search</button>
+      <button className={style.btn} type="submit">
+        <i className="bi bi-search" />
+      </button>
     </form>
   );
 };
