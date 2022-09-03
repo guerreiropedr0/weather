@@ -25,3 +25,32 @@
 .icon-right {
   right: 5%;
 }
+
+@media only screen and (min-width: 768px) {
+  .forecast {
+    background-color: transparent;
+    padding: 1rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: auto 0;
+  }
+
+  .together {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .together div {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+}

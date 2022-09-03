@@ -21,6 +21,7 @@ const Info = () => {
         )
         : (
           <>
+            <Forecast props={{ forecast, unit }} />
             <Weather props={{ current, unit }} />
           </>
         )}

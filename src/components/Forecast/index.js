@@ -8,7 +8,7 @@ const Forecast = ({ props }) => {
 
   const [day, setDay] = useState(0);
 
-  const forecastDay = forecast.forecastday[day];
+  const forecastDay = forecast && forecast.forecastday[day];
 
   const handleClick = (e) => {
     if (e.target.className.includes('bi-arrow-left')) {
@@ -20,23 +20,39 @@ const Forecast = ({ props }) => {
 
   return (
     <div className={style.forecast}>
-      <button
-        style={{ display: day < 1 ? 'none' : 'block' }}
-        onClick={(e) => handleClick(e)}
-        className={style['icon-left']}
-        type="button"
-      >
-        <i className="bi bi-arrow-left" />
-      </button>
-      <button
-        style={{ display: day > 1 ? 'none' : 'block' }}
-        onClick={(e) => handleClick(e)}
-        className={style['icon-right']}
-        type="button"
-      >
-        <i className="bi  bi-arrow-right" />
-      </button>
-      <Day props={{ forecastDay, unit }} />
+      {window.innerWidth < 768
+        ? (
+          <>
+            <button
+              style={{ display: day < 1 ? 'none' : 'block' }}
+              onClick={(e) => handleClick(e)}
+              className={style['icon-left']}
+              type="button"
+            >
+              <i className="bi bi-arrow-left" />
+            </button>
+            <button
+              style={{ display: day > 1 ? 'none' : 'block' }}
+              onClick={(e) => handleClick(e)}
+              className={style['icon-right']}
+              type="button"
+            >
+              <i className="bi  bi-arrow-right" />
+            </button>
+            <Day props={{ forecastDay, unit }} />
+          </>
+        )
+        : (
+          <div className={style.together}>
+            {forecast
+            && forecast.forecastday.map((forecastDay) => (
+              <Day
+                key={forecastDay.date_epoch}
+                props={{ forecastDay, unit }}
+              />
+            ))}
+          </div>
+        )}
     </div>
   );
 };
