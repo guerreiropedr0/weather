@@ -105,7 +105,7 @@ const Navbar = () => {
         </div>
         )}
 
-        <div style={{ marginBottom: 'auto' }}>
+        <div className={style.search}>
           <Search />
         </div>
       </nav>
