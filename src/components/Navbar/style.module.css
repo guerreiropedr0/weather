@@ -90,6 +90,10 @@
   color: var(--blue);
 }
 
+.search {
+  margin-bottom: auto;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     flex-direction: row;
@@ -110,7 +114,7 @@
   }
 
   .navbar {
-    transform: translateX(0) !important;
+    transform: none !important;
     height: auto;
     width: auto;
     z-index: 0;
@@ -136,5 +140,13 @@
   .navbar div:last-child {
     margin-left: auto;
     margin-right: 1rem;
+  }
+
+  .search {
+    margin-bottom: 0;
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
