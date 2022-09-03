@@ -10,10 +10,10 @@ const Info = () => {
 
   return (
     <div className={style.card}>
+      <Condition props={{ current, unit }} />
       {window.innerWidth < 768
         ? (
           <>
-            <Condition props={{ current, unit }} />
             {!isForecast
               ? <Weather props={{ current, unit }} />
               : <Forecast props={{ forecast, unit }} />}
