@@ -4,33 +4,41 @@ import Navbar from './components/Navbar';
 import Info from './components/Info';
 import { getLocation } from './app/weather';
 import day from './assets/day.webp';
+import dayDesktop from './assets/desktop/day.jpg';
 import night from './assets/night.jpg';
+import nightDesktop from './assets/desktop/night.jpg';
 import dayCloudy from './assets/day-cloudy.jpg';
+import dayCloudyDesktop from './assets/desktop/day-cloudy.jpg';
 import nightCloudy from './assets/night-cloudy.png';
+import nightCloudyDesktop from './assets/desktop/night-cloudy.jpg';
 import overcast from './assets/overcast.jpg';
+import overcastDesktop from './assets/desktop/overcast.jpg';
 import snow from './assets/snow.jpg';
+import snowDesktop from './assets/desktop/snow.jpg';
 
 function App() {
   const dispatch = useDispatch();
   const { current } = useSelector((state) => state.weather.location);
 
-  const [background, setBackground] = useState(`url(${day})`);
+  const [background, setBackground] = useState(`url(${window.innerWidth > 768 ? dayDesktop : day})`);
 
   const handleBackground = () => {
+    const isDesktop = window.innerWidth > 768;
+
     switch (current && current.condition.text) {
       case 'Sunny':
-        setBackground(`url(${day})`);
+        setBackground(`url(${isDesktop ? dayDesktop : day})`);
         break;
 
       case 'Clear':
-        setBackground(`url(${night})`);
+        setBackground(`url(${isDesktop ? nightDesktop : night})`);
         break;
 
       case 'Partly cloudy':
         if (current && current.is_day) {
-          setBackground(`url(${dayCloudy})`);
+          setBackground(`url(${isDesktop ? dayCloudyDesktop : dayCloudy})`);
         } else {
-          setBackground(`url(${nightCloudy})`);
+          setBackground(`url(${isDesktop ? nightCloudyDesktop : nightCloudy})`);
         }
         break;
 
@@ -46,11 +54,11 @@ function App() {
       case 'Light snow showers':
       case 'Moderate or heavy snow showers':
       case 'Moderate or heavy snow with thunder':
-        setBackground(`url(${snow})`);
+        setBackground(`url(${isDesktop ? snowDesktop : snow})`);
         break;
 
       default:
-        setBackground(`url(${overcast})`);
+        setBackground(`url(${isDesktop ? overcastDesktop : overcast})`);
         break;
     }
   };

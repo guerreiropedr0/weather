@@ -86,6 +86,7 @@ const Navbar = () => {
             <i className="bi bi-x-circle-fill" />
           </button>
         </div>
+        {window.innerWidth < 768 && (
         <div className={style.options}>
           <button
             onClick={(e) => handleForecast(e)}
@@ -102,6 +103,8 @@ const Navbar = () => {
             FORECAST
           </button>
         </div>
+        )}
+
         <div style={{ marginBottom: 'auto' }}>
           <Search />
         </div>

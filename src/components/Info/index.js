@@ -11,10 +11,20 @@ const Info = () => {
   return (
     <div className={style.card}>
       <Condition props={{ current, unit }} />
-      {!isForecast
-        ? <Weather props={{ current, unit }} />
-        : <Forecast props={{ forecast, unit }} />}
-
+      {window.innerWidth < 768
+        ? (
+          <>
+            {!isForecast
+              ? <Weather props={{ current, unit }} />
+              : <Forecast props={{ forecast, unit }} />}
+          </>
+        )
+        : (
+          <>
+            <Forecast props={{ forecast, unit }} />
+            <Weather props={{ current, unit }} />
+          </>
+        )}
     </div>
   );
 };
